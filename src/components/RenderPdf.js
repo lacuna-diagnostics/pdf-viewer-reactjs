@@ -59,6 +59,9 @@ const RenderPdf = ({
                     objDocInit.data = atob(document.base64)
                 } else {
                     objDocInit.url = document.url
+                    if (document.httpHeaders !== undefined) {
+                      objDocInit.httpHeaders = document.httpHeaders
+                    }
                 }
                 pdfDoc = await pdfjs.getDocument(objDocInit).promise
                 thumbImages = await createImages(pdfDoc)
